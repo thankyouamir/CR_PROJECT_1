@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
+    <title>Standard Template</title>
+    
+    <link rel="stylesheet" type="text/css" href="generator_three.css">
+</head>
+<body>
+    <div class="container">
+       
+        <div class="div1">
+            <h1 class="heading">Resume Builder</h1>
+            <form action="#" method="post" enctype="multipart/form-data">
+              <!-- Personal Details -->
+              <h2>Personal Details</h2>
+              <label for="name">Full Name:</label>
+              <input type="text" id="fullName" name="name" required />
+    
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+    
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" />
+    
+              <label for="address">Address:</label>
+              <input type="text" id="address" name="address" />
+    
+              <!-- Education -->
+              <h2>Education</h2>
+    
+              <textarea
+                type="text"
+                id="education"
+                name="education[]"
+                required
+              ></textarea>
+    
+              <!-- Skills -->
+              <h2>Skills</h2>
+    
+              <textarea id="skills" name="skills" rows="4" required></textarea>
+    
+              <!-- Work Experience -->
+              <h2>Work Experience</h2>
+    
+              <textarea
+                type="text"
+                id="experience"
+                name="experience[]"
+                required
+              ></textarea>
+              <h2>Languages</h2>
+
+          <textarea
+            type="text"
+            id="languages"
+            name="languages[]"
+            required
+          ></textarea>
+    
+              <!-- Photo Attachment -->
+              <h2>Attach Passport Size Photo</h2>
+              <input type="file" id="photo" name="photo" />
+    
+              
+            </form>
+          </div>
+        
+          <div class="div2">
+            <div class="resume" id="resume">
+              <div class="header">
+                  <h1>IT Resume</h1>
+                  <img id="photoDisplay" src="" alt="Uploaded Photo" />
+              </div>
+              <script>
+                  var photoInput = document.getElementById("photo");
+                  var photoDisplay = document.getElementById("photoDisplay");
+                  var photoContainer = document.getElementById("photoContainer");
+                  var userPhoto = null;
+    
+                  photoInput.addEventListener("change", function (event) {
+                    var selectedFile = event.target.files[0];
+    
+                    if (selectedFile) {
+                      userPhoto = selectedFile;
+                      var reader = new FileReader();
+    
+                      reader.onload = function (e) {
+                        photoDisplay.src = e.target.result;
+                        resizeImageToFit();
+                      };
+    
+                      reader.readAsDataURL(selectedFile);
+                    } else {
+                      userPhoto = null;
+                      photoDisplay.src = "";
+                    }
+                  });
+    
+                  function resizeImageToFit() {
+                    // Set the maximum width and height for the passport size photo
+                    var maxWidth = 150; // Change this to your desired width
+                    var maxHeight = 200; // Change this to your desired height
+    
+                    // Calculate the aspect ratio of the uploaded image
+                    var aspectRatio = photoDisplay.width / photoDisplay.height;
+    
+                    // Calculate the new dimensions to fit within the specified size
+                    var newWidth = maxWidth;
+                    var newHeight = maxWidth / aspectRatio;
+    
+                    // Check if the new height exceeds the maxHeight
+                    if (newHeight > maxHeight) {
+                      newHeight = maxHeight;
+                      newWidth = maxHeight * aspectRatio;
+                    }
+    
+                    // Apply the new dimensions to the image and container
+                    photoDisplay.style.width = newWidth + "px";
+                    photoDisplay.style.height = newHeight + "px";
+                    photoContainer.style.width = newWidth + "px";
+                    photoContainer.style.height = newHeight + "px";
+                  }
+                </script>
+              <div class="section">
+                  <h2>Personal Details</h2>
+                  <label for="fullName"
+                    >Full Name:
+                    <p id="nameDisplay"></p
+                  ></label>
+      
+                  <script>
+                    var fullNameInput = document.getElementById("fullName");
+                    var nameDisplay = document.getElementById("nameDisplay");
+                    var candidateName = "";
+      
+                    fullNameInput.addEventListener("input", function (event) {
+                      candidateName = event.target.value;
+                      nameDisplay.textContent = candidateName;
+                    });
+                  </script>
+      
+                  <label for="email"
+                    >Email:
+                    <p id="emailDisplay"></p
+                  ></label>
+      
+                  <script>
+                    var emailInput = document.getElementById("email");
+                    var emailDisplay = document.getElementById("emailDisplay");
+                    var userEmail = "";
+      
+                    emailInput.addEventListener("input", function (event) {
+                      userEmail = event.target.value;
+                      emailDisplay.textContent = userEmail;
+                    });
+                  </script>
+      
+                  <label for="phone"
+                    >Phone:
+                    <p id="phoneDisplay"></p
+                  ></label>
+      
+                  <script>
+                    var phoneInput = document.getElementById("phone");
+                    var phoneDisplay = document.getElementById("phoneDisplay");
+                    var userPhone = "";
+      
+                    phoneInput.addEventListener("input", function (event) {
+                      userPhone = event.target.value;
+                      phoneDisplay.textContent = userPhone;
+                    });
+                  </script>
+      
+                  <label for="address"
+                    >Address:
+                    <p id="addressDisplay"></p
+                  ></label>
+      
+                  <script>
+                    var addressInput = document.getElementById("address");
+                    var addressDisplay = document.getElementById("addressDisplay");
+                    var userAddress = "";
+      
+                    addressInput.addEventListener("input", function (event) {
+                      userAddress = event.target.value;
+                      addressDisplay.textContent = userAddress;
+                    });
+                  </script>
+                </div>
+      
+              <div class="section">
+                  <h2>Education</h2>
+                  <pre id="educationDisplay"></pre>
+                  <script>
+                      var educationInput = document.getElementById("education");
+                      var educationDisplay =
+                        document.getElementById("educationDisplay");
+                      var userEducation = "";
+        
+                      educationInput.addEventListener("input", function (event) {
+                        userEducation = event.target.value;
+                        educationDisplay.textContent = userEducation;
+                      });
+                    </script>
+              </div>
+      
+              <div class="section">
+                  <h2>Skills</h2>
+                  <pre id="skillsDisplay"></pre>
+                  <script>
+                      var skillsInput = document.getElementById("skills");
+                      var skillsDisplay = document.getElementById("skillsDisplay");
+                      var userSkills = "";
+        
+                      skillsInput.addEventListener("input", function (event) {
+                        userSkills = event.target.value;
+                        skillsDisplay.textContent = userSkills;
+                      });
+                    </script>
+              </div>
+      
+              <div class="section">
+                  <h2>Work Experience</h2>
+                  <pre id="experienceDisplay"></pre>
+                  <script>
+                      var experienceInput = document.getElementById("experience");
+                      var experienceDisplay =
+                        document.getElementById("experienceDisplay");
+                      var userExperience = "";
+        
+                      experienceInput.addEventListener("input", function (event) {
+                        userExperience = event.target.value;
+                        experienceDisplay.textContent = userExperience;
+                      });
+                    </script>
+              </div>
+      
+              <div class="section">
+                  <h2>Languages</h2>
+                  <pre id="languagesDisplay"></pre>
+                  <script>
+                      var languagesInput = document.getElementById("languages");
+                      var languagesDisplay =
+                        document.getElementById("languagesDisplay");
+                      var userLanguages = "";
+        
+                      languagesInput.addEventListener("input", function (event) {
+                        userLanguages = event.target.value;
+                        languagesDisplay.textContent = userLanguages;
+                      });
+                    </script>
+              </div>
+          </div>
+      
+          <div class="downloadContainer">
+            <select id="formatSelect">
+              <option value="jpg">JPG</option>
+              
+              
+            </select>
+            <button onclick="downloadDivAs() ">Download</button>
+            <script>
+              function downloadDivAs() {
+      const formatSelect = document.getElementById('formatSelect');
+      const selectedFormat = formatSelect.value;
+      const divToDownload = document.getElementById('resume');
+  
+      switch (selectedFormat) {
+          case 'jpg':
+              // Download as JPG
+              html2canvas(divToDownload).then(function(canvas) {
+                  const dataURL = canvas.toDataURL('image/jpeg');
+                  const a = document.createElement('a');
+                  a.href = dataURL;
+                  a.download = 'div_capture.jpg';
+                  a.click();
+              });
+              break;
+  
+          
+          default:
+              console.error('Invalid format selected.');
+      }
+  }
+  
+          </script>
+          
+            
+              </div>
+    </div>
+</body>
+</html>

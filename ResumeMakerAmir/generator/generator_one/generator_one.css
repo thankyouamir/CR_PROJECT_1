@@ -1,0 +1,110 @@
+
+.container {
+    display: flex; 
+    justify-content: space-between; 
+}
+.downloadContainer{
+    display: block;
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.div1, .div2 {
+    width: 48%; 
+    padding: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.heading{
+    font-size: 24px;
+    text-align: center;
+}
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style for labels and inputs */
+label, input {
+    display: block;
+    margin-bottom: 10px;
+    
+}
+textarea{
+    font-size: larger;
+}
+
+/* Style for submit button */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.resume {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.photo {
+    max-width: 200px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.section {
+    margin-bottom: 20px;
+    font-size: larger;
+}
+
+.section h2 {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.section p {
+    margin: 10px 0;
+}
+
+
+label, input ,textarea{
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="file"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styling for the submit button */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
